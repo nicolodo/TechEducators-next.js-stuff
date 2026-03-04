@@ -48,7 +48,10 @@ export default function RootLayout({ children }) {
             <li><Link href="/posts/1">Post1</Link></li>
           </ol>
         </nav>
-        {children}
+        <main className=
+          "flex-1 bg-blue-400">
+          {children}
+        </main>
         <footer className="p-4 border">
           <h2>Here is the footer</h2>
         </footer>
