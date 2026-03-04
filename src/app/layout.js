@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
+import headerStyles from "./header.module.css";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,20 +23,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      // min-h-screen gets the height of the screen I think?
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <header>
+        <header className="flex items-center justify-between px-6 py-4 border-b">
           <h1>Header</h1>
+          <p>links</p>
         </header>
-        <nav>
+        <nav className="border-b">
           <p>Links to places in idk a list</p>
           <ol>
-            <li>---Link 1</li>
+            <li className="bg-red-500 hover:bg-blue-400">---Link 1</li>
             <li><Link href="/">Home</Link></li>
           </ol>
         </nav>
         {children}
-        <footer>
+        <footer className="p-4 border">
           <h2>Here is the footer</h2>
         </footer>
       </body>
