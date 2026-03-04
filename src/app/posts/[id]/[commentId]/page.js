@@ -1,6 +1,15 @@
 
 import Link from "next/link";
 
+export async function generateMetadata(
+  {params, searchParams}, parent) {
+    const slug = (await params);
+
+    return {
+      title: 'ID:'+slug.id + ' : commentID:' + slug.commentId
+    }
+  }
+
 export default async function PostPage({ params }) {
     const slug = await params;
     console.log(slug);
