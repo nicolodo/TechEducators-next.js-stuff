@@ -6,13 +6,20 @@ export const metadata = {
     description: "we fetch data from an API"
 }
 
-export default async function PostsPage() {
+export default async function PostsPage(
+  { searchParams}
+) {
+  const query = await searchParams;
+  console.log("searchParams: ", query)
   const res = await fetch(
     "https://jsonplaceholder.typicode.com/posts"
   )
   const posts = await res.json(); // parse the response as JSON
   // console.log(posts)
-  
+  if (query.sort === "desc"){
+    posts.reverse();
+  }
+
   return (
     <main>
       <h1>Posts</h1>
