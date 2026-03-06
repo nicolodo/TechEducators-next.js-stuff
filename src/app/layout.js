@@ -44,8 +44,8 @@ export default function RootLayout({ children }) {
             <li className="bg-red-500 hover:bg-blue-400">---Link 1</li>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/about">about</Link></li>
-            <li><Link href="/posts">Posts</Link></li>
-            <li><Link href="/posts/1">Post1</Link></li>
+            <li><Link href="/fetchPosts">fetchPosts</Link></li>
+            {/* <li><Link href="/posts/1">Post1</Link></li> */}
           </ol>
         </nav>
         <main className=

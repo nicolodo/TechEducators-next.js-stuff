@@ -23,6 +23,10 @@ export default async function PostsPage(
   return (
     <main>
       <h1>Posts</h1>
+      <p><Link href={`/fetchPosts/forms`}>
+        Post a new post via forms</Link></p>
+      <p><Link href={`/fetchPosts/postgres`}>
+        view the posts in the db via postgres</Link></p>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
