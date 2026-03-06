@@ -1,6 +1,7 @@
 
 import pg from "pg"
 import Link from "next/link"
+import ShowPost from "@/components/ShowPost"
 
 export async function generateMetadata(
   {params, searchParams}, parent){
@@ -20,6 +21,7 @@ export async function generateMetadata(
     const db = new pg.Pool({
       connectionString: process.env.NEXT_POSTGRES,
     });
+
     const res = (await db.query(
       'SELECT * FROM POSTS WHERE ID = $1',[slug.id])
     ).rows;
@@ -28,17 +30,14 @@ export async function generateMetadata(
     
     
     return (
-      <div>
-      <h1>{`post id: ${slug.id}`}</h1>
-      <h1>{`post title: ${post.title}`}</h1>
-      <h1>{`post content: ${post.content}`}</h1>
-      {post.replyTo && <h1>
-        <Link href={`/fetchPosts/postgres/${post.replyTo}`}>
-          {`post reply to: ${post.replyTo}`}
-        </Link>
-      </h1>  
-      }
-      </div>
+      <>
+        <ShowPost postId={post.id}/>
+        {post.replyTo && 
+          <Link href={`/fetchPosts/postgres/${post.replyTo}`}>
+            <ShowPost postId={post.replyTo}/>
+          </Link>
+        }
+      </>
       
     )
   }
